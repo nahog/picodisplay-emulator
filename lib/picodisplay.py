@@ -77,7 +77,7 @@ class PicoDisplay:
         rect.draw(self._win)
 
     def pixel(self, x, y):
-        px = Point(y, x)
+        px = Point(x, y)
         px.setFill(color_rgb(self._pen_r, self._pen_g, self._pen_b))
         px.draw(self._win)
 
@@ -102,10 +102,10 @@ class PicoDisplay:
         circle.draw(self._win)
 
     def character(self, char_a, x, y, scale):
-        print("character not implemented")
+        print("character not implemented: " + char_a)
 
     def text(self, string, x, y, wrap, scale):
-        print("text not implemented")
+        print("text not implemented: " + string)
 
     def set_clip(self, string, x, y, w, h):
         print("set_clip not implemented")
