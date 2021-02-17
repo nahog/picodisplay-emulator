@@ -1,4 +1,4 @@
-from .graphycs import *
+from .graphycs import GraphWin, Rectangle, Circle, Line, Point, color_rgb
 
 # https://mcsp.wartburg.edu/zelle/python/graphics/graphics/graphref.html
 # https://github.com/pimoroni/pimoroni-pico/tree/main/micropython/modules/pico_display
@@ -8,8 +8,8 @@ class PicoDisplay:
     def __init__(self):
         self.BUTTON_A = 0
         self.BUTTON_B = 1
-        self.BUTTON_C = 2
-        self.BUTTON_D = 3
+        self.BUTTON_X = 2
+        self.BUTTON_Y = 3
         self._button_a = False
         self._button_b = False
         self._button_x = False
@@ -44,8 +44,6 @@ class PicoDisplay:
             self._button_x = value
         elif button == self.BUTTON_Y:
             self._button_y = value
-        else:
-            raise
 
     def is_pressed(self, button):
         if button == self.BUTTON_A:
@@ -56,8 +54,6 @@ class PicoDisplay:
             return self._button_x
         elif button == self.BUTTON_Y:
             return self._button_y
-        else:
-            raise
 
     def set_pen(self, r, g=0, b=0):
         if isinstance(r, tuple):
@@ -117,6 +113,9 @@ class PicoDisplay:
         print("update not implemented")
 
     def keep_running(self):
-        self._win.getMouse()
-        self._win.close()
-        self._win.close()
+        try:
+            self._win.getMouse()
+            self._win.close()
+            self._win.close()
+        except:
+            pass

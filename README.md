@@ -2,12 +2,16 @@
 
 Basic emulator for pico display https://github.com/pimoroni/pimoroni-pico/tree/main/micropython/modules/pico_display of python calls using graphycs.py library from https://mcsp.wartburg.edu/zelle/python/
 
+1. Add `graphycs.py` and `picodisplay.py` to your `lib` folder (if you don't have a lib folder, create one and also add `__init__.py` to it)
+2. Add `from lib import picodisplay as p` and `picodisplay = p.PicoDisplay()` and comment out the normal `import picodisplay`
+3. Add `picodisplay.keep_running()` at the end of the main file
+
 Example:
 
 ```python
 from lib import picodisplay as p
 picodisplay = p.PicoDisplay()
-# after this you can use picodisplay as usual (not all methods are implemented)
+# After this you can use picodisplay as usual (not all methods are implemented)
 
 buf = bytearray(picodisplay.get_width() * picodisplay.get_height() * 2)
 picodisplay.init(buf)
@@ -23,7 +27,7 @@ picodisplay.set_pen(pen)
 picodisplay.rectangle(100, 60, 30, 60)
 picodisplay.set_pen(255, 255, 255)
 picodisplay.circle(200, 40, 10)
-picodisplay.update() # .update() does nothing, for now, changes are applied directly to the windows (no buffer)
+picodisplay.update() # Update method does nothing for now, changes are applied directly to the window (no buffer)
 picodisplay.set_led(255, 0, 0)
 
 # This is needed at the end of your program to keep the emulator open

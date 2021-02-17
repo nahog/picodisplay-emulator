@@ -1,5 +1,7 @@
-from lib import picodisplay as p
-picodisplay = p.PicoDisplay()
+# added for emulation
+from lib.picodisplay import PicoDisplay
+picodisplay = PicoDisplay()
+# import picodisplay
 
 buf = bytearray(picodisplay.get_width() * picodisplay.get_height() * 2)
 picodisplay.init(buf)
@@ -35,4 +37,5 @@ picodisplay.set_led(255, 0, 0)
 picodisplay.set_led(0, 255, 0)
 picodisplay.set_led(0, 0, 255)
 
+# added for emulation
 picodisplay.keep_running()
