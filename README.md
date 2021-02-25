@@ -69,3 +69,7 @@ utime.sleep(1)
 
 - ticks_ms()
 - sleep(seconds)
+
+## Other projects that uses this lib
+
+- https://github.com/nahog/pico-tetris
