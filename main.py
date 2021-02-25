@@ -1,7 +1,11 @@
-# added for emulation
 from lib.picodisplay import PicoDisplay
+from lib.utime import MicroTime
+utime = MicroTime()
 picodisplay = PicoDisplay()
+# added for emulation ↑↑↑↑↑↑↑↑↑↑
+
 # import picodisplay
+# import utime
 
 buf = bytearray(picodisplay.get_width() * picodisplay.get_height() * 2)
 picodisplay.init(buf)
@@ -37,5 +41,17 @@ picodisplay.set_led(255, 0, 0)
 picodisplay.set_led(0, 255, 0)
 picodisplay.set_led(0, 0, 255)
 
-# added for emulation
+while True:
+    if picodisplay.is_pressed(picodisplay.BUTTON_A):
+        print('A')
+    if picodisplay.is_pressed(picodisplay.BUTTON_B):
+        print('B')
+    if picodisplay.is_pressed(picodisplay.BUTTON_X):
+        print('X')
+    if picodisplay.is_pressed(picodisplay.BUTTON_Y):
+        print('Y')
+    print(utime.ticks_ms())
+    utime.sleep(1)
+
+# added for emulation ↓↓↓↓↓↓↓↓↓↓
 picodisplay.keep_running()

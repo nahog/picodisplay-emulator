@@ -33,3 +33,39 @@ picodisplay.set_led(255, 0, 0)
 # This is needed at the end of your program to keep the emulator open
 picodisplay.keep_running()
 ```
+## Extras
+
+A mininal implementation of utime is also provided to simulate basic micropython timing calls
+
+```python
+from lib.utime import MicroTime
+utime = MicroTime()
+# After this you can use utime as usual (not all methods are implemented)
+
+utime.ticks_ms()
+utime.sleep(1)
+```
+
+## Implemented methods
+
+### picodisplay
+
+- init(buffer)
+- get_height()
+- get_width()
+- set_backlight(brightness)
+- set_led(r, g, b)
+- is_pressed(button)
+- set_pen(r, g, b)
+- create_pen(r, g, b)
+- clear()
+- pixel(x, y)
+- pixel_span(x, y, l)
+- rectangle(x, y, w, h)
+- circle(x, y, r)
+- update()
+
+### utime
+
+- ticks_ms()
+- sleep(seconds)
