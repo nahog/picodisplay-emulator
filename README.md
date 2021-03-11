@@ -35,15 +35,19 @@ picodisplay.keep_running()
 ```
 ## Extras
 
-A mininal implementation of utime is also provided to simulate basic micropython timing calls
+A mininal implementation of utime and machine is also provided to simulate/mock basic micropython timing/pin calls
 
 ```python
 from lib.utime import MicroTime
+from lib.machine import Pin, PWM
 utime = MicroTime()
 # After this you can use utime as usual (not all methods are implemented)
 
-utime.ticks_ms()
+ticks = utime.ticks_ms()
 utime.sleep(1)
+pwm = PWM(Pin(0))
+pwm.freq(440)
+pwm.duty_u16(8192)
 ```
 
 ## Implemented methods
@@ -69,6 +73,13 @@ utime.sleep(1)
 
 - ticks_ms()
 - sleep(seconds)
+
+### machine
+
+- Pin(pin_number)
+- PWM(pin)
+    - duty_u16(duty)
+    - freq(freq)
 
 ## Other projects that uses this lib
 
