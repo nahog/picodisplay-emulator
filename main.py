@@ -1,11 +1,13 @@
 from lib.picodisplay import PicoDisplay
 from lib.utime import MicroTime
+from lib.machine import Pin, PWM
 utime = MicroTime()
 picodisplay = PicoDisplay()
 # added for emulation ↑↑↑↑↑↑↑↑↑↑
 
 # import picodisplay
 # import utime
+# from machine import Pin, PWM
 
 buf = bytearray(picodisplay.get_width() * picodisplay.get_height() * 2)
 picodisplay.init(buf)
@@ -41,6 +43,10 @@ picodisplay.set_led(255, 0, 0)
 picodisplay.set_led(0, 255, 0)
 picodisplay.set_led(0, 0, 255)
 
+pwm = PWM(Pin(0))
+pwm.freq(440)
+pwm.duty_u16(8192)
+
 while True:
     if picodisplay.is_pressed(picodisplay.BUTTON_A):
         print('A')
@@ -52,6 +58,8 @@ while True:
         print('Y')
     print(utime.ticks_ms())
     utime.sleep(1)
+
+pwm.duty_u16(0)
 
 # added for emulation ↓↓↓↓↓↓↓↓↓↓
 picodisplay.keep_running()
